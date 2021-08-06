@@ -29,27 +29,6 @@ static_resources:
                               - name: default_echosvc
                                 weight: 30
                 http_filters:
-                  - name: envoy.filters.http.wasm
-                    typed_config:
-                      "@type": type.googleapis.com/udpa.type.v1.TypedStruct
-                      type_url: type.googleapis.com/envoy.extensions.filters.http.wasm.v3.Wasm
-                      value:
-                        config:
-                          configuration:
-                            '@type': type.googleapis.com/google.protobuf.StringValue
-                            value: |
-                              {
-                                "debug": "false",
-                                "stat_prefix": "istio",
-                                "disable_host_header_fallback": true
-                              }
-                          root_id: "example"
-                          vm_config:
-                            vm_id: "example"
-                            runtime: "envoy.wasm.runtime.null"
-                            code:
-                              local:
-                                inline_string: envoy.wasm.example
                   - name: envoy.filters.http.router
     - name: server
       address:

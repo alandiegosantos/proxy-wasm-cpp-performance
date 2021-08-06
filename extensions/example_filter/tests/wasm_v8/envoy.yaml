@@ -75,14 +75,6 @@ static_resources:
                           body:
                             inline_string: "example body\n"
                 http_filters:
-                  - name: envoy.filters.http.fault
-                    typed_config:
-                      "@type": type.googleapis.com/envoy.extensions.filters.http.fault.v3.HTTPFault
-                      delay:
-                        fixed_delay: 1s
-                        percentage:
-                          numerator: 1
-                          denominator: HUNDRED
                   - name: envoy.filters.http.router
 
   clusters:
